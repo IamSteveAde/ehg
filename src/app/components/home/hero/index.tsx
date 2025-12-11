@@ -50,7 +50,7 @@ export default function Hero() {
               alt="WhatsApp Chat Illustration"
               width={700}
               height={0}
-              className="w-[85%] md:w-[70%] lg:w-[75%] object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.45)]"
+              className="w-[85%] md:w-[70%] lg:w-[75%] object-contain "
             />
 
             {/* CHUKS AI CHARACTER */}
