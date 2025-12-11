@@ -59,7 +59,7 @@ export default function Hero() {
               alt="Chuks AI Mascot"
               width={350}
               height={0}
-              className="absolute bottom-[-20px] right-[-20px] w-[45%] md:w-[40%] lg:w-[38%] object-contain drop-shadow-[0_15px_40px_rgba(0,0,0,0.5)]"
+              className="absolute bottom-[-20px] right-[-20px] w-[45%] md:w-[40%] lg:w-[38%] object-contain "
             />
 
           </div>
