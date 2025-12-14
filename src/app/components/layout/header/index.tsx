@@ -97,7 +97,7 @@ export default function Header() {
         {/* DESKTOP CTA */}
         <div className="hidden lg:flex">
           <a
-            href="#"
+            href="https://api.whatsapp.com/send?phone=2348107942363"
             className={`px-6 py-3 rounded-full text-sm font-semibold transition
               ${sticky
                 ? "bg-primary text-white hover:bg-blue-700"
@@ -157,7 +157,7 @@ export default function Header() {
           ))}
 
           <a
-            href="#"
+            href="https://api.whatsapp.com/send?phone=2348107942363"
             className="mt-6 px-6 py-3 bg-white text-primary rounded-full text-center font-semibold hover:bg-gray-200 transition"
           >
             Start on WhatsApp

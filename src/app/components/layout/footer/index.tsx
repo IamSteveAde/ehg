@@ -60,6 +60,11 @@ export default function Footer() {
                     Services
                   </Link>
                 </li>
+                <li>
+                  <Link href="/policy" className="text-gray-400 hover:text-primary transition">
+                    Website Policies
+                  </Link>
+                </li>
               </ul>
             </div>
 
