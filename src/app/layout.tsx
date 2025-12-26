@@ -1,9 +1,9 @@
 export const metadata = {
   title: {
-    default: "Chuks AI",
-    template: "%s | Chuks AI",
+    default: "DESIGNED — Experience, Excellence, Expertise",
+    template: "%s | DESIGNED",
   },
-  description: "Your intelligent AI assistant for fast, accurate solutions.",
+  description: "DESIGNED is a luxury editorial magazine exploring how sound and technology shape experience — quietly, intentionally, and with restraint.",
 };
 import { DM_Sans } from "next/font/google";
 import "./globals.css";

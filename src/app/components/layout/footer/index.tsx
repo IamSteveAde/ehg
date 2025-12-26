@@ -1,102 +1,104 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { getImgPath } from "@/utils/pathUtils";
-import { MessageCircle, Instagram, Twitter, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#0d0f16] text-white pt-20 pb-10 overflow-hidden">
+    <footer className="relative bg-black py-24 md:py-32 overflow-hidden">
 
-      {/* Subtle ring pattern (very soft for dark mode) */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.06]">
-        <svg viewBox="0 0 800 800" className="w-[1000px] h-[1000px]">
-          <circle cx="400" cy="400" r="150" stroke="#ffffff" strokeWidth="1" fill="none" />
-          <circle cx="400" cy="400" r="260" stroke="#ffffff" strokeWidth="1" fill="none" />
-          <circle cx="400" cy="400" r="360" stroke="#ffffff" strokeWidth="1" fill="none" />
-        </svg>
-      </div>
+      {/* Top Hairline Divider */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-[70%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-      <div className="relative z-10 container mx-auto max-w-screen-xl px-6">
+      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
 
-        {/* Top Footer Content */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 mb-14">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
 
-          {/* Logo + blurb */}
-          <div className="max-w-sm">
-            <Image
-              src={getImgPath("/images/logo/chukswhite.png")}
-              alt="Chuks AI Logo"
-              width={170}
-              height={50}
-              className="mb-5"
-            />
+          {/* Left — Identity */}
+          <div className="lg:col-span-4 space-y-6">
+            <span
+              className="block text-sm tracking-[0.35em] uppercase text-white font-light"
+              style={{ textShadow: "0 4px 20px rgba(0,0,0,0.35)" }}
+            >
+              DESIGNED
+            </span>
 
-            <p className="text-gray-400 leading-relaxed">
-              Your AI-powered WhatsApp insurance assistant—smart, fast, and always available to help you compare, buy, and claim.
+            <p className="text-white/60 text-sm leading-relaxed max-w-sm">
+              A magazine exploring experience, excellence, and expertise — where
+              sound and technology are designed to disappear.
             </p>
           </div>
 
-          {/* Footer navigation groups */}
-          <div className="flex flex-col sm:flex-row gap-14">
+          {/* Center — Navigation */}
+          <div className="lg:col-span-4 space-y-6">
+            <span className="block text-[11px] tracking-[0.3em] uppercase text-white/40">
+              Navigation
+            </span>
 
-            {/* Company Section */}
-            <div>
-              <h4 className="text-white font-semibold mb-4 text-lg">Quick Links</h4>
-              <ul className="space-y-3">
-                
-                <li>
-                  <Link href="/#how" className="text-gray-400 hover:text-primary transition">
-                    How it Works
-                  </Link>
-                </li>
-                 <li>
-                  <Link href="/#about" className="text-gray-400 hover:text-primary transition">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#services" className="text-gray-400 hover:text-primary transition">
-                    Services
-                  </Link>
-                </li>
-               
-                <li>
-                  <Link href="/policy" className="text-gray-400 hover:text-primary transition">
-                    Website Policies
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Contact / Connect */}
-            <div>
-              <h4 className="text-white font-semibold mb-4 text-lg">Connect</h4>
-
-              <ul className="space-y-3">
-                <li>
-                  <a href="https://api.whatsapp.com/send?phone=2348107942363" className="flex items-center gap-2 text-gray-400 hover:text-primary transition">
-                    <MessageCircle className="w-5 h-5" />
-                    Chat on WhatsApp
-                  </a>
-                </li>
-              </ul>
-
-              
-            </div>
-
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link
+                  href="/"
+                  className="text-white/70 hover:text-white transition"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/issues"
+                  className="text-white/70 hover:text-white transition"
+                >
+                  Issues
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about-designed"
+                  className="text-white/70 hover:text-white transition"
+                >
+                  About DESIGNED
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://www.ced.africa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/70 hover:text-white transition"
+                >
+                  CED Africa
+                </a>
+              </li>
+            </ul>
           </div>
+
+          {/* Right — Publisher */}
+          <div className="lg:col-span-4 space-y-6">
+            <span className="block text-[11px] tracking-[0.3em] uppercase text-white/40">
+              Publisher
+            </span>
+
+            <p className="text-white/70 text-sm leading-relaxed max-w-sm">
+              DESIGNED is published by CED Africa, a specialist AV consulting and
+              distribution group working at the highest level of the built
+              environment.
+            </p>
+
+            <a
+              href="https://www.ced.africa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-[11px] tracking-[0.3em] uppercase text-white/80 border-b border-white/30 pb-1 hover:text-white hover:border-white transition"
+            >
+              Visit CED Africa
+            </a>
+          </div>
+
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 my-10"></div>
-
-        {/* Bottom Row */}
-        <div className="flex flex-col lg:flex-row justify-between items-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Chuks AI. All rights reserved.</p>
-
-          
+        {/* Bottom Line */}
+        <div className="mt-20 text-center text-white/40 text-xs tracking-wide">
+          © {new Date().getFullYear()} DESIGNED. All rights reserved.
         </div>
 
       </div>
