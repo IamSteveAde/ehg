@@ -1,15 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 /* -------------------------------------
-   BRAND COLORS
+   EQUITY HEALTH GROUP BRAND COLORS
 ------------------------------------- */
 const BRAND = {
-  purple: "#5f3b86",
-  teal: "#61abbb",
+  deep: "#05273a",
+  primary: "#02a7e8",
 };
 
 export default function Header() {
@@ -52,38 +53,48 @@ export default function Header() {
         className={`
           fixed top-0 left-0 w-full z-50
           backdrop-blur-xl
-          bg-white/80
           transition-colors duration-300
-          ${onDark ? "text-white" : "text-black"}
+          ${onDark ? "bg-transparent text-white" : "bg-white/80"}
         `}
       >
         <div className="container mx-auto px-6 lg:max-w-screen-xl">
           <div className="flex items-center justify-between h-20">
-            {/* LOGO — TEXT */}
+            {/* LOGO */}
             <Link href="/" className="z-50 flex items-center">
-              <span
-                className="text-sm tracking-[0.25em] uppercase font-light"
-                style={{
-                  textShadow: onDark
-                    ? "0 4px 20px rgba(0,0,0,0.45)"
-                    : "0 4px 20px rgba(0,0,0,0.25)",
-                }}
-              >
-                <span style={{ color: BRAND.purple }}>Optivance</span>{" "}
-                <span style={{ color: BRAND.teal }}>HR Africa</span>
-              </span>
+              <Image
+                src="/images/logo/ehglogo.svg"
+                alt="Equity Health Group"
+                width={150}
+                height={32}
+                priority
+                className="object-contain"
+              />
             </Link>
 
             {/* DESKTOP NAV */}
-            <nav className="hidden md:flex items-center gap-10">
-              <NavItem onDark={onDark} href="#about">About</NavItem>
-              
-              <NavItem onDark={onDark} href="#why">Why Optivance</NavItem>
-              <NavItem onDark={onDark} href="#industries">Industries</NavItem>
-              <NavItem onDark={onDark} href="#contact">Get Started</NavItem>
+            <nav className="hidden md:flex items-center gap-12">
+              <NavItem onDark={onDark} href="#about">
+                About
+              </NavItem>
+
+              <NavItem onDark={onDark} href="#platforms">
+                Healthcare Platforms
+              </NavItem>
+
+              <NavItem onDark={onDark} href="#esg">
+                ESG & Sustainability
+              </NavItem>
+
+              <NavItem onDark={onDark} href="#advantage">
+                Integrated Advantage
+              </NavItem>
+
+              <NavItem onDark={onDark} href="#partnerships">
+                Partnerships
+              </NavItem>
             </nav>
 
-            {/* MOBILE TOGGLE BUTTON */}
+            {/* MOBILE TOGGLE */}
             <button
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen((prev) => !prev)}
@@ -107,33 +118,38 @@ export default function Header() {
 
       {/* ================= MOBILE MENU ================= */}
       {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-black/90 backdrop-blur-2xl">
+        <div className="fixed inset-0 z-40 bg-[#05273a]/95 backdrop-blur-2xl">
           <nav className="h-full flex flex-col items-center justify-center">
-            <MobileNavItem delay={0} href="#about" onClick={() => setMenuOpen(false)}>
-              About Optivance
+            <MobileNavItem href="#about" onClick={() => setMenuOpen(false)}>
+              About Equity Health Group
             </MobileNavItem>
 
             <Divider />
 
-            <MobileNavItem delay={1} href="#why" onClick={() => setMenuOpen(false)}>
-              Why Optivance
+            <MobileNavItem href="#platforms" onClick={() => setMenuOpen(false)}>
+              Healthcare Platforms
             </MobileNavItem>
 
             <Divider />
 
-            <MobileNavItem delay={2} href="#industries" onClick={() => setMenuOpen(false)}>
-              Industries
+            <MobileNavItem href="#esg" onClick={() => setMenuOpen(false)}>
+              ESG & Sustainability
             </MobileNavItem>
 
             <Divider />
 
-            <MobileNavItem delay={3} href="#contact" onClick={() => setMenuOpen(false)}>
-              Get Started
+            <MobileNavItem href="#advantage" onClick={() => setMenuOpen(false)}>
+              Integrated Advantage
             </MobileNavItem>
 
             <Divider />
 
-            
+            <MobileNavItem
+              href="#partnerships"
+              onClick={() => setMenuOpen(false)}
+            >
+              Partnerships & Expansion
+            </MobileNavItem>
           </nav>
         </div>
       )}
@@ -153,13 +169,22 @@ function NavItem({
   children: React.ReactNode;
   onDark: boolean;
 }) {
-  const className = `
-    text-[11px] tracking-[0.3em] uppercase
-    transition-colors duration-300
-    ${onDark ? "text-white/90 hover:text-white" : "text-black/85 hover:text-black"}
-  `;
-
-  return <Link href={href} className={className}>{children}</Link>;
+  return (
+    <Link
+      href={href}
+      className={`
+        text-[11px] tracking-[0.32em] uppercase
+        transition-colors duration-300
+        ${
+          onDark
+            ? "text-white/90 hover:text-white"
+            : "text-[#05273a]/85 hover:text-[#05273a]"
+        }
+      `}
+    >
+      {children}
+    </Link>
+  );
 }
 
 /* ======================================================
@@ -169,25 +194,22 @@ function MobileNavItem({
   href,
   children,
   onClick,
-  delay = 0,
 }: {
   href: string;
   children: React.ReactNode;
   onClick: () => void;
-  delay?: number;
 }) {
   return (
     <Link
       href={href}
       onClick={onClick}
-      style={{ animationDelay: `${delay * 90}ms` }}
       className="
         text-white/90
         text-sm
         tracking-[0.35em]
         uppercase
-        py-4
-        transition hover:opacity-70
+        py-5
+        transition hover:text-white
       "
     >
       {children}
@@ -200,6 +222,6 @@ function MobileNavItem({
 ====================================================== */
 function Divider() {
   return (
-    <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+    <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
   );
 }

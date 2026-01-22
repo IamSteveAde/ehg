@@ -3,125 +3,147 @@
 import { motion } from "framer-motion";
 import {
   Globe,
-  Smartphone,
+  Building2,
+  Network,
   Cpu,
-  BarChart3,
-  HeartHandshake,
-  ShieldCheck,
 } from "lucide-react";
 
-export default function WhyOptivance() {
+export default function PartnershipsGlobalExpansion() {
   return (
-    <section className="relative overflow-hidden" id="why">
-      {/* PURPLE GRADIENT BACKGROUND */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, #2a123f 0%, #5f3b86 45%, #7b4db3 100%)",
-        }}
-      />
+    <section className="relative bg-white py-28 lg:py-36 overflow-hidden" id="partnerships">
+      {/* ORBIT BACKGROUND */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Large orbit */}
+        <div className="absolute -top-40 -left-40 h-[700px] w-[700px] rounded-full border border-[#02a7e8]/20" />
+        {/* Medium orbit */}
+        <div className="absolute top-1/3 -right-52 h-[500px] w-[500px] rounded-full border border-[#03a8e4]/20" />
+        {/* Small orbit */}
+        <div className="absolute bottom-0 left-1/4 h-[350px] w-[350px] rounded-full border border-[#05273a]/15" />
 
-      {/* SOFT FLOW LINES */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <div className="absolute top-0 left-1/3 h-full w-[1px] bg-gradient-to-b from-transparent via-white to-transparent" />
-        <div className="absolute top-0 left-2/3 h-full w-[1px] bg-gradient-to-b from-transparent via-white to-transparent" />
+        {/* Soft fills */}
+        <div className="absolute top-1/4 left-1/3 h-[220px] w-[220px] rounded-full bg-[#02a7e8]/5 blur-2xl" />
+        <div className="absolute bottom-1/4 right-1/4 h-[260px] w-[260px] rounded-full bg-[#03a8e4]/5 blur-2xl" />
       </div>
 
-      <div className="relative z-10 py-32">
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
-          {/* SECTION HEADER */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl mb-20 text-white"
-          >
-            <span className="block text-[11px] tracking-[0.4em] uppercase text-white/70 mb-4">
-              Why Optivance
+      <div className="relative container mx-auto px-6 lg:max-w-screen-xl">
+        {/* HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="max-w-3xl mb-24"
+        >
+          <p className="text-[#02a7e8] tracking-[0.35em] uppercase text-xs mb-6">
+            Partnerships & Global Expansion
+          </p>
+
+          <h2 className="text-[#05273a] text-4xl md:text-5xl font-light leading-tight">
+            Building Healthcare Systems.
+            <br />
+            <span className="text-[#05273a]/70">
+              Through Collaboration and Scale.
             </span>
+          </h2>
 
-            <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
-              Built with context.
-              <span className="block font-normal">
-                Powered with intelligence.
-              </span>
-            </h2>
-          </motion.div>
+          <p className="mt-8 text-[#05273a]/70 text-lg leading-relaxed">
+            Equity Health Group collaborates with governments, insurers,
+            development finance institutions, and global healthcare partners to
+            develop and operate sustainable healthcare assets that strengthen
+            national health systems and expand access to quality care.
+          </p>
+        </motion.div>
 
-          {/* THREE PILLARS */}
-          <div className="grid lg:grid-cols-3 gap-10">
-            {/* BUILT FOR AFRICA */}
-            <Pillar
-              icon={<Globe />}
-              title="Built for Africa"
-              points={[
-                "WhatsApp-first access",
-                "Simple, mobile-friendly experience",
-                "Scales across cities and countries",
-              ]}
-            />
+        {/* STRATEGY GRID */}
+        <div className="grid md:grid-cols-3 gap-12 items-stretch">
+          <StrategyCard
+            icon={Building2}
+            title="Strategic Acquisitions"
+            text="Targeted acquisitions and hospital networks that expand clinical capacity, geographic reach, and system integration."
+            accent="#02a7e8"
+          />
 
-            {/* POWERED BY TECHNOLOGY */}
-            <Pillar
-              icon={<Cpu />}
-              title="Powered by Technology"
-              points={[
-                "AI-driven screening and matching",
-                "Data-backed performance insights",
-                "Continuous skill improvement",
-              ]}
-            />
+          <StrategyCard
+            icon={Network}
+            title="Greenfield Development"
+            text="Greenfield hospital and life sciences projects designed to international standards and tailored to local health needs."
+            accent="#03a8e4"
+          />
 
-            {/* HUMAN AT THE CORE */}
-            <Pillar
-              icon={<HeartHandshake />}
-              title="Human at the Core"
-              points={[
-                "Worker dignity and protection",
-                "Employer trust and reliability",
-                "Long-term workforce development",
-              ]}
-            />
-          </div>
+          <StrategyCard
+            icon={Cpu}
+            title="Technology-Enabled Care"
+            text="Digital health platforms and technology-enabled healthcare delivery models that improve efficiency and outcomes."
+            accent="#05273a"
+          />
         </div>
+
+        {/* GLOBAL STATEMENT */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.9 }}
+          viewport={{ once: true }}
+          className="mt-28 flex justify-center"
+        >
+          <div className="flex items-center gap-4 px-10 py-6 rounded-full border border-[#05273a]/15 bg-white">
+            <Globe className="text-[#02a7e8]" size={22} />
+            <span className="text-[#05273a] tracking-widest uppercase text-xs">
+              Delivering Healthcare Excellence at Global Standards
+            </span>
+          </div>
+        </motion.div>
+
+        {/* CLOSING LINE */}
+        <p className="mt-12 text-center text-[#05273a]/60 max-w-3xl mx-auto">
+          Equity Health Group delivers healthcare excellence at global standards
+          — with measurable impact for patients, communities, and health
+          systems.
+        </p>
       </div>
     </section>
   );
 }
 
-/* -------------------------------------
-   PILLAR CARD
-------------------------------------- */
-function Pillar({
-  icon,
+/* ======================================================
+   STRATEGY CARD
+====================================================== */
+function StrategyCard({
+  icon: Icon,
   title,
-  points,
+  text,
+  accent,
 }: {
-  icon: React.ReactNode;
+  icon: any;
   title: string;
-  points: string[];
+  text: string;
+  accent: string;
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-10 text-white"
+      className="relative p-10 rounded-3xl border border-[#05273a]/10 bg-white"
     >
-      <div className="h-11 w-11 rounded-xl bg-white/15 flex items-center justify-center mb-6">
-        {icon}
+      {/* ACCENT GRADIENT */}
+      <div
+        className="absolute inset-0 rounded-3xl"
+        style={{
+          background: `linear-gradient(135deg, ${accent}12, transparent)`,
+        }}
+      />
+
+      <div className="relative">
+        <Icon size={28} style={{ color: accent }} className="mb-6" />
+        <h3 className="text-[#05273a] text-xl font-medium mb-4">
+          {title}
+        </h3>
+        <p className="text-[#05273a]/70 leading-relaxed">
+          {text}
+        </p>
       </div>
-
-      <h3 className="text-xl font-medium mb-6">{title}</h3>
-
-      <ul className="space-y-3 text-sm text-white/85">
-        {points.map((point) => (
-          <li key={point}>• {point}</li>
-        ))}
-      </ul>
     </motion.div>
   );
 }

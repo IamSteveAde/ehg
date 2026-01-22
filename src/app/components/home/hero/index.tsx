@@ -1,120 +1,182 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { Users, Smartphone, ShieldCheck, ArrowRight } from "lucide-react";
+
+const chapters = [
+  {
+    kicker: "Global Standards",
+    title: "Measurable Impact at Scale",
+    body:
+      "Equity Health Group builds and operates world-class healthcare institutions designed to improve outcomes for millions across emerging and developed markets.",
+  },
+  {
+    kicker: "Integrated Platform",
+    title: "Continuity of Care",
+    body:
+      "Our vertically integrated model spans hospitals, diagnostics, vaccines, pharmaceuticals, and dental care — enabling efficiency, quality, and scale.",
+  },
+  {
+    kicker: "Clinical Excellence",
+    title: "Built on International Benchmarks",
+    body:
+      "From tertiary hospitals to advanced diagnostics, our facilities follow global protocols, modern infrastructure standards, and continuous quality improvement.",
+  },
+  {
+    kicker: "Public Health",
+    title: "Vaccines & Essential Medicines",
+    body:
+      "Through vaccines and pharmaceuticals, we strengthen national health systems, improve access, and support long-term population health resilience.",
+  },
+  {
+    kicker: "Global Partnerships",
+    title: "Scaling Healthcare Systems",
+    body:
+      "We collaborate with governments, insurers, DFIs, and global partners to deploy sustainable healthcare infrastructure at scale.",
+  },
+];
 
 export default function Hero() {
+  const [active, setActive] = useState(0);
+
+  const next = () =>
+    setActive((p) => (p + 1) % chapters.length);
+
+  const prev = () =>
+    setActive((p) => (p - 1 + chapters.length) % chapters.length);
+
+  /* --------------------------------------------------
+     AUTO ROTATION — EVERY 6 SECONDS
+  -------------------------------------------------- */
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % chapters.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-[#f7f8fb]">
-      {/* Subtle Gradient Accent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#5f3b86]/10 via-transparent to-[#61abbb]/10" />
+    <section
+      data-dark
+      className="relative h-screen w-full overflow-hidden bg-[#05273a]"
+    >
+      {/* BACKGROUND IMAGE — FAST, OBVIOUS CINEMATIC MOTION */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center opacity-25"
+        style={{ backgroundImage: "url('/images/hero/eh.jpeg')" }}
+        animate={{
+          scale: [1, 1.22, 1],
+          x: [0, -30, 0],
+        }}
+        transition={{
+          duration: 8,
+          ease: "easeInOut",
+          repeat: Infinity,
+        }}
+      />
 
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl pt-32 pb-28">
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
-          {/* LEFT — COPY */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-6 space-y-8"
-          >
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs tracking-wide uppercase text-[#5f3b86] shadow-sm">
-              <Smartphone size={14} />
-              AI-powered • WhatsApp-native
+      {/* DARK DEPTH */}
+      <div className="absolute inset-0 bg-[#05273a]/90" />
+
+      {/* SUBTLE ACCENT */}
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-[#02a7e8]/8 to-transparent" />
+
+      {/* CONTENT */}
+      <div className="relative z-10 h-full flex items-center">
+        <div className="container mx-auto px-6 lg:max-w-screen-xl">
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            {/* LEFT — CHAPTER CONTENT */}
+            <div className="lg:col-span-7 space-y-10">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -40 }}
+                  transition={{ duration: 0.9, ease: "easeOut" }}
+                >
+                  <p className="text-[#02a7e8] tracking-[0.35em] uppercase text-xs mb-6">
+                    {chapters[active].kicker}
+                  </p>
+
+                  <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-light leading-tight max-w-2xl">
+                    {chapters[active].title}
+                  </h2>
+
+                  <p className="mt-6 max-w-xl text-white/70 text-lg leading-relaxed">
+                    {chapters[active].body}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* CTA */}
+              <Link
+                href="#about"
+                className="group inline-flex items-center gap-6 text-white tracking-[0.35em] uppercase text-xs"
+              >
+                <span className="relative">
+                  Explore Equity Health Group
+                  <span className="absolute -bottom-2 left-0 h-px w-0 bg-[#02a7e8] group-hover:w-full transition-all duration-500" />
+                </span>
+              </Link>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl md:text-6xl font-light leading-tight text-black">
-              
-              <span className="block mt-3 font-normal text-[#5f3b86]">
-                The AI-Powered Workforce Platform for Blue-Collar Talent
-              </span>
-            </h1>
-
-            {/* Description */}
-            <p className="text-black/70 text-lg leading-relaxed max-w-xl">
-              Hire, train, certify, and manage blue-collar workers seamlessly —
-              powered by AI and delivered through WhatsApp.
-            </p>
-
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Link
-                href="/hire"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#5f3b86] text-white text-sm tracking-wide uppercase transition hover:opacity-90"
-              >
-                Hire Workers
-                <ArrowRight size={16} />
-              </Link>
-
-              <Link
-                href="/workers"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl border border-black/20 text-black text-sm tracking-wide uppercase transition hover:bg-black hover:text-white"
-              >
-                Join as a Worker
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* RIGHT — SYSTEM OVERVIEW */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-6"
-          >
-            <div className="relative rounded-3xl bg-white p-10 shadow-[0_40px_120px_rgba(0,0,0,0.12)]">
-              <div className="grid gap-6">
-                <Feature
-                  icon={<Users />}
-                  title="Smart Recruitment"
-                  text="AI-driven screening and matching for reliable blue-collar talent."
-                />
-
-                <Feature
-                  icon={<ShieldCheck />}
-                  title="Training & Certification"
-                  text="Verified skills, testing, and certifications businesses can trust."
-                />
-
-                <Feature
-                  icon={<Smartphone />}
-                  title="WhatsApp-Based Platform"
-                  text="Workers and employers interact easily — no apps, no friction."
-                />
+            {/* RIGHT — DESKTOP NAV */}
+            <div className="hidden lg:flex lg:col-span-5 justify-end">
+              <div className="flex flex-col gap-5">
+                {chapters.map((c, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    className={`text-left transition ${
+                      i === active
+                        ? "text-white"
+                        : "text-white/40 hover:text-white/70"
+                    }`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className={`h-[2px] transition-all ${
+                          i === active
+                            ? "w-10 bg-[#02a7e8]"
+                            : "w-4 bg-white/20"
+                        }`}
+                      />
+                      <span className="text-sm tracking-wide">
+                        {c.kicker}
+                      </span>
+                    </div>
+                  </button>
+                ))}
               </div>
             </div>
-          </motion.div>
+          </div>
+
+          {/* MOBILE / TABLET CONTROLS */}
+          <div className="mt-14 flex lg:hidden items-center justify-between">
+            <button
+              onClick={prev}
+              className="h-11 w-11 border border-white/20 text-white/80 flex items-center justify-center"
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            <div className="text-white/50 text-xs tracking-widest">
+              {active + 1} / {chapters.length}
+            </div>
+
+            <button
+              onClick={next}
+              className="h-11 w-11 border border-white/20 text-white/80 flex items-center justify-center"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-/* -------------------------------------
-   FEATURE BLOCK
-------------------------------------- */
-function Feature({
-  icon,
-  title,
-  text,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="flex gap-4 items-start">
-      <div className="h-10 w-10 rounded-xl bg-[#5f3b86]/10 text-[#5f3b86] flex items-center justify-center">
-        {icon}
-      </div>
-      <div>
-        <h3 className="text-sm font-medium text-black">{title}</h3>
-        <p className="text-sm text-black/60 leading-relaxed">{text}</p>
-      </div>
-    </div>
   );
 }

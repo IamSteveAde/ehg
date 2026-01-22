@@ -23,11 +23,11 @@ const dmsans = DM_Sans({ subsets: ["latin"] });
 ------------------------------------- */
 export const metadata: Metadata = {
   title: {
-    default: "Digital Inclusion Initiative",
-    template: "%s | Digital Inclusion Initiative",
+    default: "Equity Health Group",
+    template: "%s | Equity Health Group",
   },
   description:
-    "Digital Inclusion Initiative works to expand digital access, build skills, and create opportunities for women and underserved communities through technology.",
+    "Equity Health Group is a premium, integrated healthcare group delivering world-class medical services across hospitals, diagnostics, vaccines, pharmaceuticals, and dental care — built to global standards with measurable impact at scale.",
 };
 
 /* -------------------------------------

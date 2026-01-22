@@ -7,62 +7,61 @@ import DiscoverProperties from "./components/home/property-option"; // mentor / 
 import Listing from "./components/home/property-list";
 import Testimonials from "./components/home/testimonial";
 import History from "./components/home/history";
-import Calculator from "./components/home/calculator";
-import Info from "./components/home/info";
+
 
 // Global components
-import AudioWelcome from "./components/AudioWelcome";
+
 
 /* -------------------------------------
-   METADATA — OPTIVANCE HR AFRICA
+   METADATA — EQUITY HEALTH GROUP
 ------------------------------------- */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://optivancehr.africa"),
+  metadataBase: new URL("https://equityhealthgroup.com"),
 
   title: {
-    default: "Optivance HR Africa",
-    template: "%s | Optivance HR Africa",
+    default: "Equity Health Group",
+    template: "%s | Equity Health Group",
   },
 
   description:
-    "Optivance HR Africa is an AI-powered workforce platform helping businesses hire, train, certify, and manage blue-collar workers — all through WhatsApp.",
+    "Equity Health Group is a premium, integrated healthcare group delivering world-class medical services across hospitals, diagnostics, vaccines, pharmaceuticals, and dental care — built to global standards with measurable impact at scale.",
 
   keywords: [
-    "Optivance HR Africa",
-    "blue collar recruitment Africa",
-    "workforce management Africa",
-    "HR platform Africa",
-    "WhatsApp HR platform",
-    "blue collar jobs Africa",
-    "AI workforce platform",
-    "staff recruitment and payroll",
-    "worker training and certification",
-    "HR compliance Africa",
+    "Equity Health Group",
+    "integrated healthcare group",
+    "healthcare infrastructure Africa",
+    "hospitals and diagnostics",
+    "vaccines and pharmaceuticals",
+    "healthcare ESG",
+    "public health systems",
+    "healthcare investment and development",
+    "healthcare partnerships",
+    "sustainable healthcare delivery",
   ],
 
   openGraph: {
-    title: "Optivance HR Africa",
+    title: "Equity Health Group",
     description:
-      "Hire, train, certify, and manage trusted blue-collar workers — powered by AI and delivered through WhatsApp.",
-    url: "https://optivancehr.africa",
-    siteName: "Optivance HR Africa",
+      "Delivering healthcare excellence at global standards — with measurable impact for patients, communities, and health systems.",
+    url: "https://equityhealthgroup.com",
+    siteName: "Equity Health Group",
     type: "website",
     images: [
       {
-        url: "https://optivancehr.africa/og/og-cover.jpg",
+        url: "https://equityhealthgroup.com/og/og-cover.jpg",
         width: 1200,
         height: 630,
-        alt: "Optivance HR Africa — AI-Powered Workforce Platform",
+        alt: "Equity Health Group — Integrated Healthcare at Global Standards",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Optivance HR Africa",
+    title: "Equity Health Group",
     description:
-      "The AI-powered workforce platform for hiring and managing blue-collar workers across Africa.",
-    images: ["https://optivancehr.africa/og/og-cover.jpg"],
+      "An integrated healthcare group delivering hospitals, diagnostics, vaccines, pharmaceuticals, and dental care at global standards.",
+    images: ["https://equityhealthgroup.com/og/og-cover.jpg"],
   },
 
   robots: {
@@ -71,7 +70,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://optivancehr.africa",
+    canonical: "https://equityhealthgroup.com",
   },
 };
 
@@ -82,7 +81,7 @@ export default function Home() {
   return (
     <main>
       {/* Audio welcome — brief, professional, plays once per visit */}
-      <AudioWelcome />
+      
 
       {/* Core hero & positioning */}
       <Hero />
@@ -99,8 +98,7 @@ export default function Home() {
 
       {/* Company journey, capability & infrastructure */}
       <History />
-      <Calculator />
-      <Info />
+      
     </main>
   );
 }
