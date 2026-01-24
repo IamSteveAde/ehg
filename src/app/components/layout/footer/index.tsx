@@ -87,18 +87,14 @@ export default function Footer() {
             </p>
 
             <div className="space-y-3 text-sm">
-              <Link
-                href="#contact"
-                className="block text-white/70 hover:text-white transition"
-              >
-                Contact Us
-              </Link>
-              <Link
-                href="/privacy"
-                className="block text-white/70 hover:text-white transition"
-              >
-                Privacy & Data Protection
-              </Link>
+              <a
+  href="mailto:equityclinicsng@gmail.com"
+  className="block text-white/70 hover:text-white transition"
+>
+  Contact Us
+</a>
+
+              
             </div>
           </div>
         </div>
